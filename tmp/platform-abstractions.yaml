@@ -1,0 +1,34 @@
+﻿apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform-abstractions
+  namespace: argocd
+spec:
+  description: "Project for KRO abstractions and developer resources"
+
+  sourceRepos:
+    - 'https://github.com/fijsh/platform-self-service.git'
+
+  destinations:
+    - namespace: default
+      server: https://kubernetes.default.svc
+    - namespace: kro
+      server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist:
+    - group: 'kro.run'
+      kind: '*'
+    - group: 'apiextensions.k8s.io'
+      kind: 'CustomResourceDefinition'
+
+  namespaceResourceWhitelist:
+    - group: 'kro.run'
+      kind: '*'
+    - group: 'resources.azure.com'
+      kind: '*'
+    - group: 'storage.azure.com'
+      kind: '*'
+    - group: 'dbforpostgresql.azure.com'
+      kind: '*'
+    - group: ''
+      kind: 'Secret'

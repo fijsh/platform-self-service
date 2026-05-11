@@ -1,0 +1,31 @@
+﻿apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: platform-abstractions
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/fijsh/platform-self-service.git
+        revision: HEAD
+        directories:
+          - path: kro-definitions
+          - path: developer-resources
+  template:
+    metadata:
+      name: 'kro-{{path.basename}}'
+    spec:
+      project: platform-abstractions
+      source:
+        repoURL: https://github.com/fijsh/platform-self-service.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=false
