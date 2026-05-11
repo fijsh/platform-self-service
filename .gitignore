@@ -3,6 +3,7 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+azure-sp.json
 .DS_Store
 *.tmp
 *.log
