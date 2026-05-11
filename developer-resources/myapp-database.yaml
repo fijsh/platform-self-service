@@ -4,6 +4,6 @@ metadata:
   name: myapp-database
   namespace: default
 spec:
-  appName: myapp
+  appName: myapp-fijsh
   environment: dev
   location: swedencentral
