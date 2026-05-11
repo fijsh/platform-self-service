@@ -9,8 +9,8 @@ spec:
 
   # Define what repositories this project can use
   sourceRepos:
-    - 'https://github.com/*/platform-self-service.git'
-    - 'https://github.com/*/platform-self-service'
+    - 'https://github.com/fijsh/platform-self-service.git'
+    - 'https://github.com/fijsh/platform-self-service'
     - '*'  # Allow all repos for flexibility during the workshop
 
   # Define where apps in this project can deploy to
